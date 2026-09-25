@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CloudMart</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>CloudMart</h1>
+      <span>Cloud-native e-commerce demo · ITS 2130</span>
+    </header>
+
+    <nav>
+      <button class="tab active" data-panel="products">Products</button>
+      <button class="tab" data-panel="orders">Orders</button>
+      <button class="tab" data-panel="users">Users</button>
+    </nav>
+
+    <main>
+      <!-- PRODUCTS -->
+      <section id="products" class="panel active">
+        <div class="card">
+          <h2>Add a product</h2>
+          <form class="inline" id="product-form">
+            <div>
+              <label>Name</label>
+              <input type="text" id="p-name" required />
+            </div>
+            <div>
+              <label>Description</label>
+              <input type="text" id="p-desc" />
+            </div>
+            <div>
+              <label>Price</label>
+              <input type="number" step="0.01" id="p-price" required />
+            </div>
+            <div>
+              <label>Stock</label>
+              <input type="number" id="p-stock" required />
+            </div>
+            <div>
+              <button class="primary" type="submit">Add product</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2>Catalog</h2>
+          <div class="status" id="product-status">Loading…</div>
+          <table id="product-table" style="display: none">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Image</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="product-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ORDERS -->
+      <section id="orders" class="panel">
+        <div class="card">
+          <h2>Place an order</h2>
+          <form class="inline" id="order-form">
+            <div>
+              <label>Product ID</label>
+              <input type="number" id="o-product-id" required />
+            </div>
+            <div>
+              <label>Product name</label>
+              <input type="text" id="o-product-name" required />
+            </div>
+            <div>
+              <label>Customer name</label>
+              <input type="text" id="o-customer" required />
+            </div>
+            <div>
+              <label>Quantity</label>
+              <input type="number" id="o-qty" value="1" min="1" required />
+            </div>
+            <div>
+              <label>Unit price</label>
+              <input type="number" step="0.01" id="o-price" required />
+            </div>
+            <div>
+              <button class="primary" type="submit">Place order</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2>Orders</h2>
+          <div class="status" id="order-status">Loading…</div>
+          <table id="order-table" style="display: none">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Customer</th>
+                <th>Qty</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="order-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- USERS -->
+      <section id="users" class="panel">
+        <div class="card">
+          <h2>Add a user</h2>
+          <form class="inline" id="user-form">
+            <div>
+              <label>Name</label>
+              <input type="text" id="u-name" required />
+            </div>
+            <div>
+              <label>Email</label>
+              <input type="email" id="u-email" required />
+            </div>
+            <div>
+              <label>Phone</label>
+              <input type="text" id="u-phone" />
+            </div>
+            <div>
+              <label>Address</label>
+              <input type="text" id="u-address" />
+            </div>
+            <div>
+              <button class="primary" type="submit">Add user</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2>Users</h2>
+          <div class="status" id="user-status">Loading…</div>
+          <table id="user-table" style="display: none">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="user-rows"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
