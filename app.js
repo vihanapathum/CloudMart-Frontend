@@ -1,7 +1,11 @@
+// Vanilla-JS frontend for CloudMart. Talks to product-service, order-service
+// and user-service entirely through the API Gateway (API_BASE_URL).
+
 let productsCache = [];
 let usersCache = [];
 const ORDER_STATUSES = ["PLACED", "SHIPPED", "DELIVERED", "CANCELLED"];
 
+// ---- tab switching ----
 document.querySelectorAll("nav .tab").forEach((btn) => {
   btn.addEventListener("click", () => {
     document.querySelectorAll("nav .tab").forEach((b) => b.classList.remove("active"));
@@ -36,6 +40,7 @@ function money(n) {
   return "$" + Number(n || 0).toFixed(2);
 }
 
+// ---- gateway health pulse ----
 async function checkPulse() {
   const wrap = document.getElementById("pulse");
   const text = document.getElementById("pulse-text");
@@ -49,6 +54,7 @@ async function checkPulse() {
   }
 }
 
+// ================= PRODUCTS =================
 async function loadProducts() {
   const statusEl = document.getElementById("product-status");
   const table = document.getElementById("product-table");
@@ -162,6 +168,7 @@ document.getElementById("product-form").addEventListener("submit", async (e) => 
   loadProducts();
 });
 
+// ================= CUSTOMERS (users) =================
 async function loadUsers() {
   const statusEl = document.getElementById("user-status");
   const table = document.getElementById("user-table");
@@ -258,6 +265,7 @@ document.getElementById("user-form").addEventListener("submit", async (e) => {
   loadUsers();
 });
 
+// ================= ORDERS =================
 function populateOrderProductSelect() {
   const sel = document.getElementById("o-product");
   const current = sel.value;
@@ -378,6 +386,7 @@ document.getElementById("order-form").addEventListener("submit", async (e) => {
   loadOrders();
 });
 
+// ---- initial load ----
 checkPulse();
 setInterval(checkPulse, 20000);
 loadProducts();
